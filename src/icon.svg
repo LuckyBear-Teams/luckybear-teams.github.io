@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 680 680" preserveAspectRatio="xMinYMin meet" role="img">
+
+<defs>
+  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1c3a5e" stroke-width="0.5"/>
+  </pattern>
+  <pattern id="gridMajor" width="100" height="100" patternUnits="userSpaceOnUse">
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#28486e" stroke-width="1"/>
+  </pattern>
+  <marker id="arrowEnd" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6 Z" fill="#7fd4ff"/>
+  </marker>
+  <marker id="arrowStart" markerWidth="10" markerHeight="10" refX="2" refY="3" orient="auto">
+    <path d="M8,0 L0,3 L8,6 Z" fill="#7fd4ff"/>
+  </marker>
+</defs>
+
+<rect x="0" y="0" width="680" height="680" fill="#0a1e33"/>
+<rect x="0" y="0" width="680" height="680" fill="url(#grid)"/>
+<rect x="0" y="0" width="680" height="680" fill="url(#gridMajor)"/>
+
+<rect x="14" y="14" width="652" height="652" fill="none" stroke="#3a6ea5" stroke-width="2"/>
+<rect x="26" y="26" width="628" height="628" fill="none" stroke="#2a5580" stroke-width="1"/>
+
+<line x1="340" y1="26" x2="340" y2="654" stroke="#3a6ea5" stroke-width="1" stroke-dasharray="6 4"/>
+<line x1="26" y1="340" x2="654" y2="340" stroke="#3a6ea5" stroke-width="1" stroke-dasharray="6 4"/>
+
+<circle cx="340" cy="340" r="300" fill="none" stroke="#4fa3e0" stroke-width="1.5" stroke-dasharray="4 6"/>
+<circle cx="340" cy="340" r="2" fill="#7fd4ff"/>
+
+<circle cx="340" cy="340" r="270" fill="none" stroke="#7fd4ff" stroke-width="3"/>
+
+<line x1="340" y1="340" x2="610" y2="340" stroke="#7fd4ff" stroke-width="1" marker-end="url(#arrowEnd)"/>
+<text x="470" y="332" fill="#7fd4ff" font-family="'Courier New', monospace" font-size="16" text-anchor="middle">Leak
+</text>
+
+<path d="M180 260 C180 246 191 235 205 235 L290 235 L320 275 L475 275 C489 275 500 286 500 300 L500 440 C500 454 489 465 475 465 L205 465 C191 465 180 454 180 440 Z" fill="none" stroke="#ffffff" stroke-width="3" stroke-linejoin="round"/>
+
+<line x1="290" y1="235" x2="320" y2="275" stroke="#ffffff" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+
+<circle cx="340" cy="235" r="70" fill="#0a1e33" stroke="#ffffff" stroke-width="3"/>
+<circle cx="340" cy="235" r="70" fill="none" stroke="#7fd4ff" stroke-width="1" stroke-dasharray="2 5"/>
+
+<path d="M340 195 L305 235 L328 235 L328 275 L352 275 L352 235 L375 235 Z" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+
+<line x1="182" y1="500" x2="500" y2="500" stroke="#7fd4ff" stroke-width="1" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"/>
+<line x1="180" y1="450" x2="180" y2="508" stroke="#4a7db0" stroke-width="1"/>
+<line x1="500" y1="450" x2="500" y2="508" stroke="#4a7db0" stroke-width="1"/>
+<text x="340" y="524" fill="#7fd4ff" font-family="'Courier New', monospace" font-size="16" text-anchor="middle">Lucky Bear</text>
+
+</svg>
