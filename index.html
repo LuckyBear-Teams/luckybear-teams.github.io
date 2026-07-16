@@ -1,1 +1,304 @@
-Hello, World!
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucky Bear</title>
+<link rel="icon" type="image/svg+xml" href="src/icon.svg">
+<link rel="icon" type="image/png" href="src/icon.png">
+<style>
+  :root{
+    --blue-deep:#0a2f52;
+    --blue-mid:#0f3d68;
+    --blue-line:#5aa9d6;
+    --blue-line-soft:#3a7ba8;
+    --paper:#eaf2f8;
+    --amber:#e8a33d;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--blue-mid);
+    background-image:
+      linear-gradient(var(--blue-line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--blue-line-soft) 1px, transparent 1px);
+    background-size:40px 40px;
+    background-position:-1px -1px;
+    color:var(--paper);
+    font-family:'Courier New', 'Consolas', monospace;
+    min-height:100vh;
+  }
+  .wrap{
+    width:min(920px, 92vw);
+    margin:0 auto;
+    padding:clamp(24px, 5vw, 60px) 0;
+  }
+  .sheet{
+    position:relative;
+    border:2px solid var(--blue-line);
+    padding:clamp(20px, 4vw, 56px);
+    background:rgba(10,47,82,0.55);
+    margin-bottom:clamp(20px, 4vw, 36px);
+  }
+  .corner-tr, .corner-bl{
+    position:absolute;
+    width:26px;
+    height:26px;
+    border:2px solid var(--amber);
+  }
+  .corner-tr{
+    top:-2px;
+    right:-2px;
+    border-left:none;
+    border-bottom:none;
+  }
+  .corner-bl{
+    bottom:-2px;
+    left:-2px;
+    border-right:none;
+    border-top:none;
+  }
+  .crosshair{
+    position:absolute;
+    width:14px;
+    height:14px;
+    opacity:0.6;
+  }
+  .crosshair::before,
+  .crosshair::after{
+    content:"";
+    position:absolute;
+    background:var(--blue-line);
+  }
+  .crosshair::before{
+    top:50%;
+    left:0;
+    width:100%;
+    height:1px;
+    transform:translateY(-50%);
+  }
+  .crosshair::after{
+    left:50%;
+    top:0;
+    height:100%;
+    width:1px;
+    transform:translateX(-50%);
+  }
+  .ch-1{top:10px; left:10px;}
+  .ch-2{top:10px; right:10px;}
+  .ch-3{bottom:10px; left:10px;}
+  .ch-4{bottom:10px; right:10px;}
+
+  .hero-title{
+    font-size:clamp(48px, 12vw, 120px);
+    line-height:0.9;
+    font-weight:400;
+    letter-spacing:-0.02em;
+    color:var(--paper);
+    -webkit-text-stroke:1.5px var(--blue-line);
+    margin:0;
+  }
+  .hero-sub{
+    margin-top:clamp(14px, 3vw, 22px);
+    font-size:clamp(14px, 2.4vw, 20px);
+    color:var(--amber);
+    letter-spacing:0.04em;
+  }
+  .measure{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:22px 0 0;
+  }
+  .measure .tick{
+    flex:1;
+    height:1px;
+    background:var(--blue-line-soft);
+    position:relative;
+  }
+  .measure .tick::before,
+  .measure .tick::after{
+    content:"";
+    position:absolute;
+    top:-4px;
+    width:1px;
+    height:9px;
+    background:var(--blue-line-soft);
+  }
+  .measure .tick::before{left:0;}
+  .measure .tick::after{right:0;}
+
+  .section-title{
+    font-size:clamp(13px, 1.8vw, 15px);
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    color:var(--blue-line);
+    margin:0 0 18px;
+    border-bottom:1px dashed var(--blue-line-soft);
+    padding-bottom:12px;
+  }
+  .section-title span{color:var(--amber);}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:clamp(16px, 3vw, 28px);
+  }
+  .card{
+    border:1px solid var(--blue-line-soft);
+    padding:clamp(16px, 3vw, 24px);
+    position:relative;
+  }
+  .card .num{
+    font-size:11px;
+    letter-spacing:0.1em;
+    color:var(--blue-line-soft);
+    margin-bottom:10px;
+  }
+  .card h3{
+    margin:0 0 10px;
+    font-size:clamp(15px, 2vw, 17px);
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--paper);
+  }
+  .card p{
+    margin:0;
+    font-size:13px;
+    line-height:1.7;
+    color:var(--blue-line);
+  }
+
+  .contact-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .contact-label{
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--blue-line-soft);
+    margin-bottom:8px;
+  }
+  .contact-value{
+    font-size:clamp(15px, 2.4vw, 19px);
+    color:var(--paper);
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:11px 20px;
+    border:1px solid var(--amber);
+    color:var(--amber);
+    text-decoration:none;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    background:transparent;
+    transition:background 0.15s ease, color 0.15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{
+    background:var(--amber);
+    color:var(--blue-deep);
+  }
+  .btn::before{content:"›";}
+
+  .footer-row{
+    padding-top:16px;
+    border-top:1px dashed var(--blue-line-soft);
+    text-align:center;
+    font-size:10px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--blue-line-soft);
+  }
+  .footer-row strong{
+    color:var(--amber);
+    font-weight:400;
+  }
+
+  @media (max-width:600px){
+    .grid{grid-template-columns:1fr;}
+    .contact-row{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="sheet">
+    <div class="corner-tr"></div>
+    <div class="corner-bl"></div>
+    <div class="crosshair ch-1"></div>
+    <div class="crosshair ch-2"></div>
+    <div class="crosshair ch-3"></div>
+    <div class="crosshair ch-4"></div>
+    <img src="src/icon.svg" alt="" style="width:clamp(48px,10vw,88px); height:auto; margin-bottom:12px; filter:drop-shadow(0 0 0 var(--blue-line));">
+    <h1 class="hero-title">Lucky<br>Bear</h1>
+    <div class="hero-sub">面白そうなことは全部やる</div>
+    <div class="measure"><span class="tick"></span></div>
+  </div>
+
+  <div class="sheet">
+    <div class="corner-tr"></div>
+    <div class="corner-bl"></div>
+    <div class="crosshair ch-1"></div>
+    <div class="crosshair ch-2"></div>
+    <div class="crosshair ch-3"></div>
+    <div class="crosshair ch-4"></div>
+    <div class="section-title">About</div>
+    <div class="grid">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>方針</h3>
+        <p>やりたいことをやりたいようにやる。ジャンルも形式も問わず、興味の向くままに動く。</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>スタイル</h3>
+        <p>計画よりもまず手を動かす。うまくいかなくても次に進む、それがLucky Bearのやり方。</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>活動</h3>
+        <p>制作、企画、教育コンテンツ配布、その他なんでも。面白そうなら理由はあとから考える。</p>
+      </div>
+      <div class="card">
+        <div class="num">04</div>
+        <h3>仲間</h3>
+        <p>高専生のみで構成。現在、新しいメンバーの募集はしていません。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet">
+    <div class="corner-tr"></div>
+    <div class="corner-bl"></div>
+    <div class="crosshair ch-1"></div>
+    <div class="crosshair ch-2"></div>
+    <div class="crosshair ch-3"></div>
+    <div class="crosshair ch-4"></div>
+    <div class="section-title">Contact</div>
+    <div class="contact-row">
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value">luckybear.group@gmail.com</div>
+      </div>
+      <a class="btn" href="mailto:luckybear.group@gmail.com">Send a message</a>
+    </div>
+  </div>
+
+  <div class="footer-row">
+    <strong>Lucky Bear</strong>
+  </div>
+
+</div>
+</body>
+</html>
