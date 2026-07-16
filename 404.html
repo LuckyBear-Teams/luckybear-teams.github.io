@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 — Page Not Found</title>
+<title>404 — ページが見つかりません</title>
 <style>
   :root{
     --blue-deep:#0a2f52;
@@ -252,11 +252,12 @@
   <div class="main-row">
     <div class="code-num">4<span class="zero">0</span>4</div>
     <div class="desc-block">
-      <h1>Page not found</h1>
-      <p>The page you're looking for doesn't exist. It may have been moved or removed.</p>
+      <h1>ページが見つかりません</h1>
+      <p>お探しのページは存在しません。移動または削除された可能性があります。</p>
       <div class="measure"><span class="tick"></span></div>
       <div class="actions">
-        <a class="btn primary" href="/">Return to home</a>
+        <a class="btn primary" href="/">ホームに戻る</a>
+        <a class="btn" id="backBtn" href="javascript:history.back()" style="display:none;">前のページに戻る</a>
       </div>
     </div>
   </div>
@@ -265,5 +266,10 @@
     <span><strong>Lucky Bear</strong></span>
   </div>
 </div>
+<script>
+  if (window.history.length > 1) {
+    document.getElementById('backBtn').style.display = 'inline-flex';
+  }
+</script>
 </body>
 </html>
