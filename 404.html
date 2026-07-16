@@ -1,1 +1,269 @@
-404 not found
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found</title>
+<style>
+  :root{
+    --blue-deep:#0a2f52;
+    --blue-mid:#0f3d68;
+    --blue-line:#5aa9d6;
+    --blue-line-soft:#3a7ba8;
+    --paper:#eaf2f8;
+    --amber:#e8a33d;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--blue-mid);
+    background-image:
+      linear-gradient(var(--blue-line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--blue-line-soft) 1px, transparent 1px);
+    background-size:40px 40px;
+    background-position:-1px -1px;
+    color:var(--paper);
+    font-family:'Courier New', 'Consolas', monospace;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow-x:hidden;
+  }
+  .sheet{
+    position:relative;
+    width:min(920px, 92vw);
+    margin:32px auto;
+    border:2px solid var(--blue-line);
+    padding:clamp(20px, 4vw, 56px);
+    background:rgba(10,47,82,0.55);
+  }
+  .sheet::before,
+  .sheet::after{
+    content:"";
+    position:absolute;
+    width:26px;
+    height:26px;
+    border:2px solid var(--amber);
+  }
+  .sheet::before{
+    top:-2px;
+    left:-2px;
+    border-right:none;
+    border-bottom:none;
+  }
+  .sheet::after{
+    bottom:-2px;
+    right:-2px;
+    border-left:none;
+    border-top:none;
+  }
+  .corner-tr, .corner-bl{
+    position:absolute;
+    width:26px;
+    height:26px;
+    border:2px solid var(--amber);
+  }
+  .corner-tr{
+    top:-2px;
+    right:-2px;
+    border-left:none;
+    border-bottom:none;
+  }
+  .corner-bl{
+    bottom:-2px;
+    left:-2px;
+    border-right:none;
+    border-top:none;
+  }
+  .eyebrow{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:clamp(10px, 1.4vw, 13px);
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--blue-line);
+    border-bottom:1px dashed var(--blue-line-soft);
+    padding-bottom:14px;
+    margin-bottom:clamp(24px, 5vw, 48px);
+    gap:12px;
+  }
+  .eyebrow span:first-child{color:var(--amber);}
+  .main-row{
+    display:flex;
+    align-items:flex-end;
+    gap:clamp(16px, 4vw, 40px);
+    flex-wrap:wrap;
+  }
+  .code-num{
+    font-size:clamp(72px, 16vw, 168px);
+    line-height:0.85;
+    font-weight:400;
+    letter-spacing:-0.02em;
+    color:var(--paper);
+    position:relative;
+    -webkit-text-stroke:1.5px var(--blue-line);
+  }
+  .code-num .zero{
+    display:inline-block;
+    position:relative;
+  }
+  .desc-block{
+    flex:1;
+    min-width:220px;
+    padding-bottom:clamp(8px, 2vw, 18px);
+  }
+  .desc-block h1{
+    font-size:clamp(16px, 2.6vw, 22px);
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin:0 0 10px;
+    color:var(--paper);
+  }
+  .desc-block p{
+    font-size:clamp(12px, 1.8vw, 14px);
+    line-height:1.7;
+    color:var(--blue-line);
+    margin:0 0 22px;
+    max-width:46ch;
+  }
+  .measure{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:22px;
+  }
+  .measure .tick{
+    flex:1;
+    height:1px;
+    background:var(--blue-line-soft);
+    position:relative;
+  }
+  .measure .tick::before,
+  .measure .tick::after{
+    content:"";
+    position:absolute;
+    top:-4px;
+    width:1px;
+    height:9px;
+    background:var(--blue-line-soft);
+  }
+  .measure .tick::before{left:0;}
+  .measure .tick::after{right:0;}
+  .actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:11px 20px;
+    border:1px solid var(--blue-line);
+    color:var(--paper);
+    text-decoration:none;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    background:transparent;
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .btn:hover{
+    background:var(--blue-line);
+    color:var(--blue-deep);
+  }
+  .btn.primary{
+    border-color:var(--amber);
+    color:var(--amber);
+  }
+  .btn.primary:hover{
+    background:var(--amber);
+    color:var(--blue-deep);
+  }
+  .btn::before{content:"›";}
+  .footer-row{
+    margin-top:clamp(28px, 6vw, 52px);
+    padding-top:16px;
+    border-top:1px dashed var(--blue-line-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:10px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--blue-line-soft);
+  }
+  .footer-row strong{
+    color:var(--amber);
+    font-weight:400;
+  }
+  .crosshair{
+    position:absolute;
+    width:14px;
+    height:14px;
+    opacity:0.6;
+  }
+  .crosshair::before,
+  .crosshair::after{
+    content:"";
+    position:absolute;
+    background:var(--blue-line);
+  }
+  .crosshair::before{
+    top:50%;
+    left:0;
+    width:100%;
+    height:1px;
+    transform:translateY(-50%);
+  }
+  .crosshair::after{
+    left:50%;
+    top:0;
+    height:100%;
+    width:1px;
+    transform:translateX(-50%);
+  }
+  .ch-1{top:10px; left:10px;}
+  .ch-2{top:10px; right:10px;}
+  .ch-3{bottom:10px; left:10px;}
+  .ch-4{bottom:10px; right:10px;}
+  @media (max-width:520px){
+    .eyebrow{flex-direction:column; align-items:flex-start; gap:6px;}
+    .main-row{flex-direction:column; align-items:flex-start;}
+    .code-num{font-size:22vw;}
+    .footer-row{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+  <div class="crosshair ch-1"></div>
+  <div class="crosshair ch-2"></div>
+  <div class="crosshair ch-3"></div>
+  <div class="crosshair ch-4"></div>
+
+  <div class="main-row">
+    <div class="code-num">4<span class="zero">0</span>4</div>
+    <div class="desc-block">
+      <h1>Page not found</h1>
+      <p>The page you're looking for doesn't exist. It may have been moved or removed.</p>
+      <div class="measure"><span class="tick"></span></div>
+      <div class="actions">
+        <a class="btn primary" href="/">Return to home</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-row">
+    <span><strong>Lucky Bear</strong></span>
+  </div>
+</div>
+</body>
+</html>
