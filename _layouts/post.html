@@ -1,0 +1,41 @@
+---
+layout: default
+---
+<article class="sheet">
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+  <div class="crosshair ch-1"></div>
+  <div class="crosshair ch-2"></div>
+  <div class="crosshair ch-3"></div>
+  <div class="crosshair ch-4"></div>
+
+  <div class="article-meta">{{ page.date | date: "%Y年%m月%d日" }}{% if page.tags and page.tags.size > 0 %} ／ {% for tag in page.tags %}{{ tag }}{% unless forloop.last %} ・ {% endunless %}{% endfor %}{% endif %}</div>
+  <h1 class="article-title">{{ page.title }}</h1>
+  <div class="article-body">
+    {{ content }}
+  </div>
+</article>
+
+<nav class="post-pager">
+  {% if page.previous %}
+  <a class="pager-link pager-prev" href="{{ page.previous.url | relative_url }}">
+    <div class="pager-dir">← 前の記事</div>
+    <div class="pager-title">{{ page.previous.title }}</div>
+  </a>
+  {% else %}
+  <span class="pager-link disabled"><div class="pager-dir">← 前の記事</div><div class="pager-title">なし</div></span>
+  {% endif %}
+
+  {% if page.next %}
+  <a class="pager-link pager-next" href="{{ page.next.url | relative_url }}">
+    <div class="pager-dir">次の記事 →</div>
+    <div class="pager-title">{{ page.next.title }}</div>
+  </a>
+  {% else %}
+  <span class="pager-link pager-next disabled"><div class="pager-dir">次の記事 →</div><div class="pager-title">なし</div></span>
+  {% endif %}
+</nav>
+
+<p style="margin-top:20px;">
+  <a class="btn" href="{{ '/blog/' | relative_url }}">ブログ一覧へ戻る</a>
+</p>
