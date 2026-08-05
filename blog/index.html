@@ -48,6 +48,11 @@ title: ブログ
     {% endfor %}
   </ul>
   <p class="empty-note" id="blog-no-result" style="display:none;">該当する記事が見つかりませんでした。</p>
+  <nav class="pagination" id="blog-pagination" style="display:none;">
+    <button type="button" id="blog-page-prev">← 前へ</button>
+    <span class="current" id="blog-page-current"></span>
+    <button type="button" id="blog-page-next">次へ →</button>
+  </nav>
 </div>
 
 <script src="{{ '/assets/js/blog-search.js' | relative_url }}"></script>
