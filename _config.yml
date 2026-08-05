@@ -9,6 +9,7 @@ markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  math_engine: mathjax
 
 permalink: /記事/:year年:month月:day日/:title/
 
