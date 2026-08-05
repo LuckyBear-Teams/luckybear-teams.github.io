@@ -266,14 +266,20 @@ img{max-width:100%;}
   font-size:12px;
   letter-spacing:0.06em;
 }
-.pagination a, .pagination span{
+.pagination a, .pagination span, .pagination button{
   border:1px solid var(--blue-line-soft);
   padding:8px 14px;
   text-decoration:none;
   color:var(--blue-line);
+  background:transparent;
+  font-family:inherit;
+  font-size:12px;
+  letter-spacing:0.06em;
+  cursor:pointer;
 }
-.pagination a:hover{ border-color:var(--amber); color:var(--amber); }
+.pagination a:hover, .pagination button:not(:disabled):hover{ border-color:var(--amber); color:var(--amber); }
 .pagination .current{ border-color:var(--amber); color:var(--amber); }
+.pagination button:disabled{ opacity:0.35; cursor:not-allowed; }
 
 /* ---------- article ---------- */
 .article-meta{
