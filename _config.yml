@@ -1,5 +1,5 @@
 title: Lucky Bear
-description: "高専生のみで構成された学校内グループ Lucky Bear の公式サイト。面白そうなことは全部やる。"
+description: "Lucky Bear公式サイト"
 url: "https://luckybear-teams.github.io"
 baseurl: ""
 lang: ja
@@ -11,7 +11,7 @@ kramdown:
   syntax_highlighter: rouge
   math_engine: mathjax
 
-permalink: /記事/:year年:month月:day日/:title/
+permalink: /blog/:year/:month/:day/:title/
 
 paginate: 10
 paginate_path: "/blog/page:num/"
