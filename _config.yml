@@ -1,0 +1,38 @@
+title: Lucky Bear
+description: "高専生のみで構成された学校内グループ Lucky Bear の公式サイト。面白そうなことは全部やる。"
+url: "https://luckybear-teams.github.io"
+baseurl: ""
+lang: ja
+author: Lucky Bear
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /記事/:year年:month月:day日/:title/
+
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
